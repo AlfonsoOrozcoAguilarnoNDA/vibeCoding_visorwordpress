@@ -1,0 +1,14 @@
+# WP-Shield Viewer - .htaccess
+# Versión: 1.0 - Grok 4 (xAI)
+
+RewriteEngine On
+RewriteBase /
+
+# Redirigir URLs amigables al visor
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9\-_\/]+)$ index.php?slug=$1 [L,QSA]
+
+# Bloqueo básico de bots comunes
+RewriteCond %{HTTP_USER_AGENT} (bot|spider|crawler|scrapy|semrush|ahrefs|mj12bot) [NC]
+RewriteRule ^ - [F,L]
