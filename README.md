@@ -20,7 +20,7 @@ Se elige un poryecto y se probará en
 
 Se pondrá un direcrtorio por cada uno de ellos.
 
-No espero que Mata.ai y minimax den algo funcional y la gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINIes muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo como este. Dentro de los puntos Originales que pasé, en modo razonamiento Gemini ignoró unos siete requerimientos.
+No espero que Mata.ai y minimax den algo funcional y la gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINI es muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo como este. Dentro de los puntos Originales que pasé, en modo razonamiento Gemini ignoró unos nueve requerimientos. Se puede ver en la conversación citada en el link anterior.
 
 **Visor Wordpress** es un sistema de visualización de contenido independiente, escrito en **PHP 8.x Procedural**, diseñado para operar de forma aislada a la estructura de archivos de WordPress, pero aprovechando su base de datos (MariaDB).
 
@@ -112,11 +112,20 @@ PROHIBIDO el uso de NPM; todas las librerías deben ser vía CDN.
 
 REQUERIDO: El código debe ser limpio, comentado y funcional para PHP 8.x.
 
-¿Cómo usar este documento?
-Te sugiero probarlo primero en Gemini y luego en Kimi (que mencionaste que aún responden bien). Los puntos donde verás quién "gana" el benchmark son:
+Recordatorios:
 
-El parseo del wp-config.php: ¿Realmente lee el archivo o te pide que lo llenes tú?
+1. editor.php de ser posible para nuevos posts incluyendo cabecera
+2. Navbar fija con especificaciones técnicas
+3. Footer fijo con especificaciones técnicas
+4. Proporciones de columnas 8/4 o 9/3
+5. Lista de posts agrupada por meses en sidebar
+6. Cards SOLO si hay imagen destacada, no por defecto
+7. Sidebar intercambiable izquierda/derecha con mecanismo específico
+8. Nube o lista de categorías.
+9. Area de 5 mensajes mas recientes.
+10. De ser posible lista de plugins o temas
 
+FIN PROMPT 
 El unserialize() de los plugins: ¿Muestra la lista de nombres de plugins o un código roto?
 
 El .htaccess: ¿Entiende cómo pasar el slug a un sistema procedural?
