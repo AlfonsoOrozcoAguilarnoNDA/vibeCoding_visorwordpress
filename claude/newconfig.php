@@ -21,19 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+/* Nota importante :
+ Primero trató de hacer un rgeex mal hecho.
+ Luego include que no funcionaba porque creaba otros problemas.
+ Pegue a mano mis datos de base de datos, alterados aquiy asi si funciono.
+*/
+ 
 
 define('WPSHIELD_VERSION', '1.1.0');
 define('WPSHIELD_MODEL',   'Claude Sonnet 4.6 (Anthropic)');
 
 // ─── RUTA A WP-CONFIG ────────────────────────────────────────────────────────
-$wp_config_path = __DIR__ . '/../wp-config.php';
 
-if (!file_exists($wp_config_path)) {
-    die('<div style="font-family:monospace;color:red;padding:20px;">
-        [WP-Shield] ERROR: No se encontró wp-config.php en: '
-        . htmlspecialchars($wp_config_path) .
-        '</div>');
-}
+define('WP_TEMP_DIR', '/home/serverdeaplicaci/vibecodingmexico.com/wp-content/tmp');
+// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'sersdfsdfsdf' );
+
+/** Database username */
+define( 'DB_USER', 'serverdesdfsdfsdfsdfdf' );
+
+/** Database password */
+define( 'DB_PASSWORD', 'sfffgfdfgfg' );
+
+/** Database hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8mb4' );
+
+/** The database collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+
+$table_prefix = 'wp_';
+
 
 // ─── STUBS MÍNIMOS ───────────────────────────────────────────────────────────
 // wp-config.php puede llamar funciones de WP que no existen fuera del entorno.
@@ -57,20 +78,6 @@ if (!defined('WPINC')) {
     define('WPINC', 'wp-includes');
 }
 
-// ─── INCLUDE CONTROLADO DE WP-CONFIG ─────────────────────────────────────────
-// ob_start() captura cualquier output accidental que wp-config pudiera generar.
-ob_start();
-try {
-    include $wp_config_path;
-} catch (Throwable $e) {
-    ob_end_clean();
-    die('<div style="font-family:monospace;color:red;padding:20px;">
-        [WP-Shield] ERROR al cargar wp-config.php: '
-        . htmlspecialchars($e->getMessage()) .
-        '</div>');
-}
-ob_end_clean();
-
 // ─── VERIFICAR CONSTANTES EXTRAÍDAS ──────────────────────────────────────────
 $required = ['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'DB_HOST'];
 $missing  = [];
@@ -81,12 +88,6 @@ foreach ($required as $const) {
     }
 }
 
-if (!empty($missing)) {
-    die('<div style="font-family:monospace;color:red;padding:20px;">
-        [WP-Shield] ERROR: Constantes no encontradas en wp-config.php: '
-        . htmlspecialchars(implode(', ', $missing)) .
-        '</div>');
-}
 
 // $table_prefix viene directo del include
 if (!isset($table_prefix)) {
