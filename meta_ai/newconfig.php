@@ -1,13 +1,13 @@
 <?php
-/* WP-Shield Viewer v1.0 - Generado por IA - 2026-05-05 */
-/*
-MIT License
-
-Copyright (c) 2026 WP-Shield Viewer
-
-Permission is hereby granted, free of charge, to any person obtaining a copy...
-*/
-
+/**
+ * SISTEMA: Visor wordpress
+ * https://vibecodingmexico.com/los-siete-magnificos-llm-son-uno-por-ahora/
+ * FECHA: 5 de mayo de 2026
+ * LICENCIA: MIT
+ * COAUTORÍA: Meta AI (v.2026-03) & Alfonso Orozco Aguilar
+ * NO SE USE EN PRODUCCION
+ * DESCRIPCIÓN: revisar el enlace, pero es un visor de wordpress como ejercicio de benchmarking
+ */
 define('DB_NAME', 'cambia_nombre_db');
 define('DB_USER', 'cambia_usuario_db');
 define('DB_PASSWORD', 'cambia_pass_db');
