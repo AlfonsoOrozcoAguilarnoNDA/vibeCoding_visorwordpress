@@ -11,7 +11,7 @@ Al mismo tiempo, abril 2026 a mayo 2026, ha bajado la calidad de los LLM disponi
 [(https://vibecodingmexico.com/la-prueba-de-la-semana/)](https://vibecodingmexico.com/la-prueba-de-la-semana/)
 
 
-Se elige un poryecto y se probó en 
+Se elige un proyecto y se probó en 
 1. Qwen - se negó a trabajar y corrigió prompt - consultor pedante
 2. Kimi - systemn is busy
 3. Claude - si hizo algo ganador peor tuve que editar mucho su newconfig.php
@@ -22,7 +22,7 @@ Se elige un poryecto y se probó en
 
 La idea era poner un directorio por cada uno de ellos, solo lo hice con lcuade, metaai y grok.
 
-La gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINI es muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo como este. Dentro de los puntos Originales que pasé, en modo razonamiento Gemini ignoró unos nueve requerimientos. Se puede ver en la conversación citada en el link anterior. Mas comentarios en este segundo link:
+La gran incógnita es GROK. Hago notar que el modo de razonamiento de GEMINI es muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo como este. Dentro de los puntos Originales que pasé, en modo razonamiento Gemini ignoró unos nueve requerimientos. Se puede ver en la conversación citada en el link anterior. Mas comentarios en este segundo link:
 
 Antes de:
 [(https://vibecodingmexico.com/la-prueba-de-la-semana/)](https://vibecodingmexico.com/la-prueba-de-la-semana/)
