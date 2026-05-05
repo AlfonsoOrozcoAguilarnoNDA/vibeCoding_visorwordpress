@@ -48,7 +48,7 @@ En el último trimestre (febrero-mayo 2026), se ha detectado un fenómeno de *Mo
 
 ## ⚖️ Licencia
 Este proyecto se distribuye bajo la **Licencia MIT**. 
-## ⚖️ Prompt Original
+## ⚖️ Prompt Original Pendiente de Modificación
 MASTER PROMPT: Benchmark de Razonamiento y Desarrollo Estructural (WP-Shield Viewer)
 CONTEXTO Y OBJETIVO
 El objetivo es desarrollar un sistema de visualización de contenido ligero y autónomo que funcione de manera independiente a una instalación de WordPress existente (que se encuentra bajo ataque en sus rutas nativas). El sistema debe leer la base de datos de WP pero NO puede cargar el entorno de WordPress (wp-load.php).
