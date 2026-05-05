@@ -20,7 +20,7 @@ Se elige un poryecto y se probará en
 
 Se pondrá un direcrtorio por cada uno de ellos.
 
-No espero que Mata.ai y minimax den algo funcional y la gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINIes muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo com oeste.
+No espero que Mata.ai y minimax den algo funcional y la gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINIes muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo como este. Dentro de los puntos Originales que pasé, en modo razonamiento Gemini ignoró unos siete requerimientos.
 
 **Visor Wordpress** es un sistema de visualización de contenido independiente, escrito en **PHP 8.x Procedural**, diseñado para operar de forma aislada a la estructura de archivos de WordPress, pero aprovechando su base de datos (MariaDB).
 
