@@ -1,0 +1,75 @@
+# WP-Shield Viewer — .htaccess
+# Modelo: Claude Sonnet 4.6 (Anthropic)
+# Licencia: MIT License — Copyright (c) 2025 WP-Shield Viewer
+#
+# Ubicación: /viewer/.htaccess
+# Redirige URLs amigables del WP original hacia el visor,
+# preservando la estructura de slugs para el SEO.
+
+Options -Indexes
+
+# ─── MOTOR DE REESCRITURA ─────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /viewer/
+
+    # ── Archivos físicos existentes: pasar sin tocar ──────────────────────────
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # ── Redirigir slugs de posts de WordPress al visor ────────────────────────
+    # Formato WP: /mi-post-slug/ → /viewer/index.php?slug=mi-post-slug
+    # Captura: cualquier slug simple de un nivel de profundidad.
+    RewriteRule ^([a-z0-9\-\_]+)/?$  index.php?slug=$1 [QSA,L]
+
+    # ── Redirigir URLs de archivo por fecha de WordPress ─────────────────────
+    # Formato WP: /2024/03/ → /viewer/index.php?month=2024-03
+    RewriteRule ^([0-9]{4})/([0-9]{2})/?$  index.php?month=$1-$2 [QSA,L]
+
+    # ── Redirigir búsquedas de WordPress ─────────────────────────────────────
+    # Formato WP: /?s=termino → /viewer/index.php?s=termino
+    # (Esto aplica si el servidor redirige el tráfico al viewer primero)
+    RewriteCond %{QUERY_STRING} ^s=(.+)$
+    RewriteRule ^$  index.php [QSA,L]
+
+    # ── Redirigir categorías ──────────────────────────────────────────────────
+    # Formato WP: /category/mi-cat/ → /viewer/index.php?cat=mi-cat
+    RewriteRule ^category/([a-z0-9\-\_]+)/?$  index.php?cat=$1 [QSA,L]
+
+</IfModule>
+
+# ─── SEGURIDAD: Proteger archivos sensibles ────────────────────────────────
+<FilesMatch "^(newconfig|functions)\.php$">
+    # Bloquear acceso directo desde el navegador a archivos de configuración
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ─── PROTECCIÓN DEL EDITOR (recomendado: añadir Basic Auth) ─────────────────
+# Descomenta y configura para proteger editor.php con contraseña HTTP:
+#
+# <Files "editor.php">
+#     AuthType Basic
+#     AuthName "WP-Shield Editor"
+#     AuthUserFile /ruta/absoluta/.htpasswd
+#     Require valid-user
+# </Files>
+
+# ─── CABECERAS DE SEGURIDAD GENERALES ────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ─── BLOQUEO DE BOTS AGRESIVOS (protección adicional) ────────────────────────
+<IfModule mod_rewrite.c>
+    # Bloquear user-agents conocidos de scraping malicioso
+    RewriteCond %{HTTP_USER_AGENT} (SemrushBot|AhrefsBot|MJ12bot|DotBot|BLEXBot|MegaIndex) [NC]
+    RewriteRule .* - [F,L]
+
+    # Bloquear solicitudes sin User-Agent (bots crudos)
+    RewriteCond %{HTTP_USER_AGENT} ^-?$
+    RewriteRule .* - [F,L]
+</IfModule>
