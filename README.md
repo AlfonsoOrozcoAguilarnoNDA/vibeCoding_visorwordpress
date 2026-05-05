@@ -5,6 +5,23 @@ Este proyecto nace como una respuesta de emergencia y una herramienta de auditor
 
 Actualmente, varios sitios basados en WordPress bajo mi administración están experimentando ataques persistentes de fuerza bruta y denegación de servicio dirigidos específicamente a los puntos de entrada nativos (`wp-login.php`, `xmlrpc.php`). 
 
+Al mismo tiempo, abril 2026 a mayo 2026, ha bajado la calidad de los LLM disponibles en chats online y he pensado hacer un censo con los que medianamente funcionan. Mas informes en 
+[(https://vibecodingmexico.com/la-prueba-de-la-semana/)](https://vibecodingmexico.com/la-prueba-de-la-semana/)
+
+
+Se elige un poryecto y se probará en 
+1 Qwen
+2 Kimi
+3 Claude
+4 Gemini
+5 Grok
+6 Meta.ai (por imagenes)
+7 Minimax si puedo usarlo en el modo que he usado antes
+
+Se pondrá un direcrtorio por cada uno de ellos.
+
+No espero que Mata.ai y minimax den algo funcional y la gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINIes muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo com oeste.
+
 **Visor Wordpress** es un sistema de visualización de contenido independiente, escrito en **PHP 8.x Procedural**, diseñado para operar de forma aislada a la estructura de archivos de WordPress, pero aprovechando su base de datos (MariaDB).
 
 ## 🧪 El Benchmark de Razonamiento (Stress Test LLM)
