@@ -1,0 +1,59 @@
+/* WP-Shield Viewer v1.0 - Generado por IA - 2026-05-05 */
+/*
+MIT License
+Copyright (c) 2026 WP-Shield Viewer
+*/
+
+body { 
+    padding-top: 56px; 
+    padding-bottom: 50px; 
+    background: #f8f9fa;
+}
+
+.navbar-shield { 
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1030; 
+}
+
+.footer-shield { 
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    height: 40px; 
+    line-height: 40px; 
+    background: #343a40;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
+
+.shield-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-main { flex: 0 0 100%; padding: 15px; }
+.sidebar-main { flex: 0 0 100%; padding: 15px; }
+
+body.sidebar-left .shield-container { flex-direction: row-reverse; }
+body.sidebar-right .shield-container { flex-direction: row; }
+
+@media (min-width: 992px) {
+    .content-main { flex: 0 0 66.666667%; }
+    .sidebar-main { flex: 0 0 33.333333%; }
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.widget-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
