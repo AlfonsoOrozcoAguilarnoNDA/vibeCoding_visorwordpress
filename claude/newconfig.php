@@ -2,7 +2,6 @@
 /**
  * WP-Shield Viewer — newconfig.php
  * Modelo: Claude Sonnet 4.6 (Anthropic)
- * Licencia: MIT License
  *
  * MIT License
  * Copyright (c) 2025 WP-Shield Viewer
@@ -14,82 +13,98 @@
  * furnished to do so, subject to the following conditions:
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
-// ─── CONFIGURACIÓN DE RUTA ──────────────────────────────────────────────────
-// El visor está en /viewer/ dentro del WP. wp-config.php está un nivel arriba.
-define('WPSHIELD_VERSION', '1.0.0');
+define('WPSHIELD_VERSION', '1.1.0');
 define('WPSHIELD_MODEL',   'Claude Sonnet 4.6 (Anthropic)');
 
+// ─── RUTA A WP-CONFIG ────────────────────────────────────────────────────────
 $wp_config_path = __DIR__ . '/../wp-config.php';
 
 if (!file_exists($wp_config_path)) {
     die('<div style="font-family:monospace;color:red;padding:20px;">
-        [WP-Shield] ERROR: No se encontró wp-config.php en: ' . htmlspecialchars($wp_config_path) . '
-        </div>');
+        [WP-Shield] ERROR: No se encontró wp-config.php en: '
+        . htmlspecialchars($wp_config_path) .
+        '</div>');
 }
 
-// ─── LECTURA Y PARSEO DE wp-config.php ──────────────────────────────────────
-$config_raw = file_get_contents($wp_config_path);
-
-/**
- * Extrae el valor de una constante define('KEY', 'VALUE') del contenido de wp-config.php
- */
-function wpshield_extract_constant(string $content, string $constant_name): string|false {
-    // Soporta comillas simples y dobles, espacios variables
-    $pattern = "/define\s*\(\s*['\"]" . preg_quote($constant_name, '/') . "['\"]\s*,\s*['\"]([^'\"]*)['\"\s*]\)/";
-    if (preg_match($pattern, $content, $matches)) {
-        return $matches[1];
-    }
-    return false;
+// ─── STUBS MÍNIMOS ───────────────────────────────────────────────────────────
+// wp-config.php puede llamar funciones de WP que no existen fuera del entorno.
+// Definimos stubs vacíos para evitar errores fatales al hacer el include.
+if (!function_exists('add_filter')) {
+    function add_filter() {}
+}
+if (!function_exists('add_action')) {
+    function add_action() {}
+}
+if (!function_exists('do_action')) {
+    function do_action() {}
+}
+if (!function_exists('apply_filters')) {
+    function apply_filters($tag, $value) { return $value; }
+}
+if (!defined('ABSPATH')) {
+    define('ABSPATH', __DIR__ . '/../');
+}
+if (!defined('WPINC')) {
+    define('WPINC', 'wp-includes');
 }
 
-/**
- * Extrae $table_prefix del contenido de wp-config.php
- */
-function wpshield_extract_table_prefix(string $content): string {
-    if (preg_match('/\$table_prefix\s*=\s*[\'"]([^\'"]+)[\'"]/', $content, $m)) {
-        return $m[1];
-    }
-    return 'wp_'; // fallback estándar
-}
-
-// Extraer constantes de conexión
-$db_name = wpshield_extract_constant($config_raw, 'DB_NAME');
-$db_user = wpshield_extract_constant($config_raw, 'DB_USER');
-$db_pass = wpshield_extract_constant($config_raw, 'DB_PASSWORD');
-$db_host = wpshield_extract_constant($config_raw, 'DB_HOST');
-
-// Validar que se extrajeron todos los valores necesarios
-$extraction_errors = [];
-if ($db_name === false) $extraction_errors[] = 'DB_NAME';
-if ($db_user === false) $extraction_errors[] = 'DB_USER';
-if ($db_pass === false) $extraction_errors[] = 'DB_PASSWORD';
-if ($db_host === false) $extraction_errors[] = 'DB_HOST';
-
-if (!empty($extraction_errors)) {
+// ─── INCLUDE CONTROLADO DE WP-CONFIG ─────────────────────────────────────────
+// ob_start() captura cualquier output accidental que wp-config pudiera generar.
+ob_start();
+try {
+    include $wp_config_path;
+} catch (Throwable $e) {
+    ob_end_clean();
     die('<div style="font-family:monospace;color:red;padding:20px;">
-        [WP-Shield] ERROR: No se pudieron extraer las constantes: ' . implode(', ', $extraction_errors) . '<br>
-        Verifique el formato de wp-config.php.
-        </div>');
+        [WP-Shield] ERROR al cargar wp-config.php: '
+        . htmlspecialchars($e->getMessage()) .
+        '</div>');
+}
+ob_end_clean();
+
+// ─── VERIFICAR CONSTANTES EXTRAÍDAS ──────────────────────────────────────────
+$required = ['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'DB_HOST'];
+$missing  = [];
+
+foreach ($required as $const) {
+    if (!defined($const)) {
+        $missing[] = $const;
+    }
 }
 
-// Extraer table_prefix
-$table_prefix = wpshield_extract_table_prefix($config_raw);
+if (!empty($missing)) {
+    die('<div style="font-family:monospace;color:red;padding:20px;">
+        [WP-Shield] ERROR: Constantes no encontradas en wp-config.php: '
+        . htmlspecialchars(implode(', ', $missing)) .
+        '</div>');
+}
 
-// ─── CONEXIÓN A BASE DE DATOS ────────────────────────────────────────────────
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+// $table_prefix viene directo del include
+if (!isset($table_prefix)) {
+    $table_prefix = 'wp_';
+}
+
+// ─── CONEXIÓN A BASE DE DATOS ─────────────────────────────────────────────────
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 if (!$conn) {
     die('<div style="font-family:monospace;color:red;padding:20px;">
-        [WP-Shield] ERROR DE CONEXIÓN: ' . htmlspecialchars(mysqli_connect_error()) . '<br>
-        Host: ' . htmlspecialchars($db_host) . ' | DB: ' . htmlspecialchars($db_name) . '
-        </div>');
+        [WP-Shield] ERROR DE CONEXIÓN: '
+        . htmlspecialchars(mysqli_connect_error()) .
+        '<br>Host: ' . htmlspecialchars(DB_HOST) .
+        ' | DB: '   . htmlspecialchars(DB_NAME) .
+        '</div>');
 }
 
-// Forzar charset UTF-8
 mysqli_set_charset($conn, 'utf8mb4');
 
-// Definir constante de prefijo para uso global
 define('DB_PREFIX', $table_prefix);
