@@ -10,13 +10,13 @@ Al mismo tiempo, abril 2026 a mayo 2026, ha bajado la calidad de los LLM disponi
 
 
 Se elige un poryecto y se probará en 
-1 Qwen
-2 Kimi
-3 Claude
-4 Gemini
-5 Grok
-6 Meta.ai (por imagenes)
-7 Minimax si puedo usarlo en el modo que he usado antes
+1. Qwen
+2. Kimi
+3. Claude
+4. Gemini
+5. Grok
+6. Meta.ai (por imagenes)
+7. Minimax si puedo usarlo en el modo que he usado antes
 
 Se pondrá un direcrtorio por cada uno de ellos.
 
@@ -120,9 +120,6 @@ El parseo del wp-config.php: ¿Realmente lee el archivo o te pide que lo llenes 
 El unserialize() de los plugins: ¿Muestra la lista de nombres de plugins o un código roto?
 
 El .htaccess: ¿Entiende cómo pasar el slug a un sistema procedural?
-
----
-**Nota de Auditoría:** Este repositorio es parte de un experimento de benchmarking para evaluar la capacidad de respuesta de modelos como Gemini, Kimi, Claude y otros ante entornos de "austeridad técnica" y restricciones de tokens en el contexto de desarrollo en México.
 
 ---
 **Nota de Auditoría:** Este repositorio es parte de un experimento de benchmarking para evaluar la capacidad de respuesta de modelos como Gemini, Kimi, Claude y otros ante entornos de "austeridad técnica" y restricciones de tokens en el contexto de desarrollo en México.
