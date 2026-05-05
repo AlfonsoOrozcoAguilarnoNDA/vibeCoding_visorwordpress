@@ -1,3 +1,5 @@
+![Logo de repositorio](sietemagnificos.jpg)
+
 # WP-Visor Wordpress (Project: 04-MAY-2026)
 
 ## 📋 Contexto y Propósito
@@ -131,10 +133,17 @@ Recordatorios:
 9. Area de 5 mensajes mas recientes.
 10. De ser posible lista de plugins o temas
 
-FIN PROMPT 
+# FIN PROMPT 
 El unserialize() de los plugins: ¿Muestra la lista de nombres de plugins o un código roto?
 
 El .htaccess: ¿Entiende cómo pasar el slug a un sistema procedural?
+# Conclusión
 
+**Los que no saben programar sin LLM rtienen un problema**
 ---
 **Nota de Auditoría:** Este repositorio es parte de un experimento de benchmarking para evaluar la capacidad de respuesta de modelos como Gemini, Kimi, Claude y otros ante entornos de "austeridad técnica" y restricciones de tokens en el contexto de desarrollo en México.
+
+![Kimi](kimi5demayo.png)
+![Gemini](gemini5demayo.png)
+![Minimax](minimax5demayo.png)
+![Qwen](qwen5demayo.png)
