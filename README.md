@@ -139,7 +139,7 @@ El unserialize() de los plugins: ¿Muestra la lista de nombres de plugins o un c
 El .htaccess: ¿Entiende cómo pasar el slug a un sistema procedural?
 # Conclusión
 
-**Los que no saben programar sin LLM rtienen un problema**
+**Los que no saben programar sin LLM tienen un problema**
 ---
 **Nota de Auditoría:** Este repositorio es parte de un experimento de benchmarking para evaluar la capacidad de respuesta de modelos como Gemini, Kimi, Claude y otros ante entornos de "austeridad técnica" y restricciones de tokens en el contexto de desarrollo en México.
 
