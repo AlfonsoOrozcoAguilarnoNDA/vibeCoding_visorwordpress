@@ -14,7 +14,7 @@ Al mismo tiempo, abril 2026 a mayo 2026, ha bajado la calidad de los LLM disponi
 Se elige un poryecto y se probó en 
 1. Qwen - se negó a trabajar y corrigió prompt - consultor pedante
 2. Kimi - systemn is busy
-3. Claude - si hizo algo ganador
+3. Claude - si hizo algo ganador peor tuve que editar mucho su newconfig.php
 4. Gemini - se quedó colgado
 5. Grok - si hizo algo pero viooló reglas basicas
 6. Meta.ai (por imagenes) - hizo algo pero fue como hacer un edificio en la playa sin ventanas
@@ -143,6 +143,7 @@ El .htaccess: ¿Entiende cómo pasar el slug a un sistema procedural?
 ---
 **Nota de Auditoría:** Este repositorio es parte de un experimento de benchmarking para evaluar la capacidad de respuesta de modelos como Gemini, Kimi, Claude y otros ante entornos de "austeridad técnica" y restricciones de tokens en el contexto de desarrollo en México.
 
+![Claude](claude5demayo.png)
 ![Kimi](kimi5demayo.png)
 ![Gemini](gemini5demayo.png)
 ![Minimax](minimax5demayo.png)
