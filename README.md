@@ -9,18 +9,24 @@ Al mismo tiempo, abril 2026 a mayo 2026, ha bajado la calidad de los LLM disponi
 [(https://vibecodingmexico.com/la-prueba-de-la-semana/)](https://vibecodingmexico.com/la-prueba-de-la-semana/)
 
 
-Se elige un poryecto y se probará en 
-1. Qwen
-2. Kimi
-3. Claude
-4. Gemini
-5. Grok
-6. Meta.ai (por imagenes)
-7. Minimax si puedo usarlo en el modo que he usado antes
+Se elige un poryecto y se probó en 
+1. Qwen - se negó a trabajar y corrigió prompt - consultor pedante
+2. Kimi - systemn is busy
+3. Claude - si hizo algo ganador
+4. Gemini - se quedó colgado
+5. Grok - si hizo algo pero viooló reglas basicas
+6. Meta.ai (por imagenes) - hizo algo pero fue como hacer un edificio en la playa sin ventanas
+7. Minimax - se nego a trabajar.
 
-Se pondrá un direcrtorio por cada uno de ellos.
+La idea era poner un directorio por cada uno de ellos, solo lo hice con lcuade, metaai y grok.
 
-No espero que Mata.ai y minimax den algo funcional y la gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINI es muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo como este. Dentro de los puntos Originales que pasé, en modo razonamiento Gemini ignoró unos nueve requerimientos. Se puede ver en la conversación citada en el link anterior.
+La gran incóginta es GROK. Hago notar que el modo de razonamiento de GEMINI es muy inferior a Claude o KIMI incluso en la planeación de un proyecto sencillo como este. Dentro de los puntos Originales que pasé, en modo razonamiento Gemini ignoró unos nueve requerimientos. Se puede ver en la conversación citada en el link anterior. Mas comentarios en este segundo link:
+
+Antes de:
+[(https://vibecodingmexico.com/la-prueba-de-la-semana/)](https://vibecodingmexico.com/la-prueba-de-la-semana/)
+
+Después de:
+[(https://vibecodingmexico.com/los-siete-magnificos-llm-son-uno-por-ahora/)](https://vibecodingmexico.com/los-siete-magnificos-llm-son-uno-por-ahora/)
 
 **Visor Wordpress** es un sistema de visualización de contenido independiente, escrito en **PHP 8.x Procedural**, diseñado para operar de forma aislada a la estructura de archivos de WordPress, pero aprovechando su base de datos (MariaDB).
 
