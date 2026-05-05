@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteBase /viewer/
+
+# Bloquear rutas de ataque - 403 directo, no 302
+RewriteRule ^wp-admin - [F,L]
+RewriteRule ^wp-login\.php - [F,L]
+RewriteRule ^xmlrpc\.php - [F,L]
+
+# Si el archivo existe, servirlo
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# URLs amigables
+RewriteRule ^([a-z0-9-]+)/?$ index.php?slug=$1 [QSA,L]
+
+# Headers seguridad
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set X-XSS-Protection "1; mode=block"
